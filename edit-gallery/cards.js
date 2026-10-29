@@ -1,0 +1,522 @@
+window.GALLERY = {
+ "title": "Từ điển dựng phim",
+ "intro": "Chưa biết gọi tên kỹ thuật thì chưa viết được prompt. Xem demo, chọn thứ mình muốn, trang ghép sẵn prompt để dán cho AI.",
+ "groups": [
+  {
+   "id": "rhythm",
+   "name": "Nhịp",
+   "en": "Pacing",
+   "lead": "Cắt ở đâu, mỗi cảnh dài bao lâu. Nhịp quyết định video gấp hay lắng."
+  },
+  {
+   "id": "camera",
+   "name": "Chuyển động máy",
+   "en": "Camera moves",
+   "lead": "Khung hình di chuyển thế nào trong một cảnh. Mỗi kiểu nói một điều khác nhau."
+  },
+  {
+   "id": "transition",
+   "name": "Chuyển cảnh",
+   "en": "Transitions",
+   "lead": "Cách nối hai cảnh. Cắt thẳng là mặc định; chuyển cảnh chỉ dùng ở chỗ đổi ý lớn."
+  },
+  {
+   "id": "accent",
+   "name": "Nhấn & tốc độ",
+   "en": "Accents & speed",
+   "lead": "Gia vị cho khoảnh khắc đắt nhất. Dùng ít mới có tác dụng."
+  },
+  {
+   "id": "look",
+   "name": "Tông màu",
+   "en": "Color looks",
+   "lead": "Một tông cho cả video. Demo: nửa đầu là hình gốc, nửa sau có tông."
+  }
+ ],
+ "cards": [
+  {
+   "id": "r-beat",
+   "group": "rhythm",
+   "name": "Cắt theo beat",
+   "en": "cut on the beat",
+   "feel": "Gọn, có nhịp, người xem thấy hình 'nhảy' cùng nhạc.",
+   "use": "Clip theo nhạc, quảng cáo ngắn, trend.",
+   "avoid": "Video có người nói (cắt theo câu nói, không theo nhạc).",
+   "prompt": "Cắt theo beat (cut on the beat): mỗi cảnh dài 2 beat, điểm cắt rơi đúng phách.",
+   "capcut": "Bật Beat (đánh dấu nhịp) trên track nhạc, kéo điểm cắt vào các chấm.",
+   "demo": "demos/r-beat.mp4",
+   "poster": "posters/r-beat.jpg"
+  },
+  {
+   "id": "r-montage",
+   "group": "rhythm",
+   "name": "Dồn dập nửa beat",
+   "en": "flash montage",
+   "feel": "Bùng nổ, năng lượng cao, như nhạc vừa 'drop'.",
+   "use": "Đúng chỗ nhạc drop, một lần mỗi video.",
+   "avoid": "Cả video (mệt mắt), nội dung cần đọc chữ.",
+   "prompt": "Dồn dập nửa beat (flash montage) ở chỗ nhạc drop: 8 cảnh ngắn, mỗi cảnh nửa beat, mỗi cảnh bật zoom nhẹ từ 1.18 về 1.0.",
+   "capcut": "Cắt mỗi clip dài nửa khoảng cách giữa hai chấm Beat; Animation vào: Phóng to.",
+   "demo": "demos/r-montage.mp4",
+   "poster": "posters/r-montage.jpg"
+  },
+  {
+   "id": "r-accel",
+   "group": "rhythm",
+   "name": "Tăng tốc dần",
+   "en": "accelerating cuts",
+   "feel": "Hồi hộp, dồn tới cao trào.",
+   "use": "Đoạn build trước cao trào hoặc trước cảnh lộ sản phẩm.",
+   "avoid": "Đoạn kết cần lắng.",
+   "prompt": "Nhịp tăng tốc dần (accelerating cuts): cảnh dài 4 beat, rồi 2, rồi 1, rồi nửa beat, dồn vào cao trào.",
+   "capcut": "Mỗi clip sau ngắn bằng nửa clip trước, cắt trên chấm Beat.",
+   "demo": "demos/r-accel.mp4",
+   "poster": "posters/r-accel.jpg"
+  },
+  {
+   "id": "r-slow",
+   "group": "rhythm",
+   "name": "Nhịp lắng",
+   "en": "slow pacing, long takes",
+   "feel": "Bình yên, sang, cho người xem thời gian cảm.",
+   "use": "Mở hoặc kết video cảm xúc, sản phẩm cao cấp.",
+   "avoid": "Video trend cần giữ chân trong 3 giây đầu.",
+   "prompt": "Nhịp lắng (slow pacing): ít cảnh, mỗi cảnh 3 giây trở lên, hoà cảnh mềm giữa hai cảnh, máy đẩy vào thật chậm.",
+   "capcut": "Clip dài, Transition: Mix (hoà), Keyframe Scale tăng chậm.",
+   "demo": "demos/r-slow.mp4",
+   "poster": "posters/r-slow.jpg"
+  },
+  {
+   "id": "r-tension",
+   "group": "rhythm",
+   "name": "Căng rồi nhả",
+   "en": "tension and release",
+   "feel": "Đã: sau đoạn dồn dập là một khoảnh khắc chậm, đẹp.",
+   "use": "Khoảnh khắc đắt nhất của video (rót, mở hộp, lộ mặt).",
+   "avoid": "Footage không có khoảnh khắc nào đáng giữ lâu.",
+   "prompt": "Căng rồi nhả (tension and release): dồn dập nửa beat 2 nhịp, rồi giữ một cảnh slow-motion 0.5x dài 4 nhịp cho khoảnh khắc đẹp nhất.",
+   "capcut": "Các clip ngắn liền nhau, rồi một clip Speed 0.5x.",
+   "demo": "demos/r-tension.mp4",
+   "poster": "posters/r-tension.jpg"
+  },
+  {
+   "id": "r-action",
+   "group": "rhythm",
+   "name": "Cắt cận trên hành động",
+   "en": "match on action, cut-in",
+   "feel": "Liền mạch, như có hai máy quay, mắt không thấy vết cắt.",
+   "use": "Một hành động rõ (rót, mở, cầm lên): cắt từ toàn sang cận khi hành động đang diễn ra.",
+   "avoid": "Hành động đã xong ở cảnh trước.",
+   "prompt": "Cắt cận trên hành động (match on action): cắt từ cảnh rộng sang cảnh cận đúng lúc hành động đang diễn ra, cùng một beat.",
+   "capcut": "Tách clip (Split) giữa cử chỉ, phần sau Scale lớn hơn, hướng vào chủ thể.",
+   "demo": "demos/r-action.mp4",
+   "poster": "posters/r-action.jpg"
+  },
+  {
+   "id": "r-alternate",
+   "group": "rhythm",
+   "name": "Đổi cỡ cảnh",
+   "en": "shot size alternation",
+   "feel": "Hình không 'giật', người xem luôn biết đang ở đâu và nhìn gì.",
+   "use": "Mọi video ghép nhiều cảnh: toàn → trung → cận rồi lặp lại.",
+   "avoid": "Đặt hai cảnh cùng cỡ cạnh nhau.",
+   "prompt": "Đổi cỡ cảnh (shot size alternation): toàn → trung → cận, hai cảnh liền nhau không cùng cỡ.",
+   "capcut": "Sắp clip theo cỡ cảnh trước khi cắt nhịp.",
+   "demo": "demos/r-alternate.mp4",
+   "poster": "posters/r-alternate.jpg"
+  },
+  {
+   "id": "c-push",
+   "group": "camera",
+   "name": "Đẩy vào",
+   "en": "push in, dolly in",
+   "feel": "Chú ý vào đây; thân mật, căng dần.",
+   "use": "Khoảnh khắc quan trọng, sản phẩm, gương mặt.",
+   "avoid": "Mọi cảnh đều đẩy vào (mất tác dụng).",
+   "prompt": "Đẩy vào (push in): máy tiến chậm vào chủ thể, scale 1.0 → 1.2 trong cả cảnh, có ease.",
+   "capcut": "Keyframe Scale ở đầu và cuối clip: 100% → 120%.",
+   "demo": "demos/c-push.mp4",
+   "poster": "posters/c-push.jpg"
+  },
+  {
+   "id": "c-pull",
+   "group": "camera",
+   "name": "Kéo ra",
+   "en": "pull out, reveal",
+   "feel": "Hé lộ toàn cảnh, khép lại, chia tay.",
+   "use": "Mở đầu bằng chi tiết rồi lộ bối cảnh; cảnh kết.",
+   "avoid": "Khi chi tiết mới là điều cần xem.",
+   "prompt": "Kéo ra (pull out): bắt đầu cận vào chi tiết rồi lùi ra lộ toàn cảnh, scale 1.7 → 1.0.",
+   "capcut": "Keyframe Scale + Position: đầu clip phóng to vào chi tiết, cuối clip về 100%.",
+   "demo": "demos/c-pull.mp4",
+   "poster": "posters/c-pull.jpg"
+  },
+  {
+   "id": "c-pan",
+   "group": "camera",
+   "name": "Lia ngang",
+   "en": "pan, truck",
+   "feel": "Dẫn mắt đi, khám phá không gian, nối hai thứ.",
+   "use": "Cảnh rộng có nhiều thứ để xem (quầy, căn phòng, kệ hàng).",
+   "avoid": "Cảnh cần đứng yên để đọc chữ.",
+   "prompt": "Lia ngang (pan): khung hình trượt chậm từ phải sang trái qua cảnh rộng, scale 1.3.",
+   "capcut": "Scale 130%, Keyframe Position X ở đầu và cuối clip.",
+   "demo": "demos/c-pan.mp4",
+   "poster": "posters/c-pan.jpg"
+  },
+  {
+   "id": "c-tilt",
+   "group": "camera",
+   "name": "Lia dọc",
+   "en": "tilt",
+   "feel": "Từ trên xuống: kể lại; từ dưới lên: lớn lao.",
+   "use": "Không gian cao (đèn → bàn), người đứng (chân → mặt).",
+   "avoid": "Ảnh/clip không còn chỗ dư theo chiều dọc.",
+   "prompt": "Lia dọc (tilt): khung hình đi từ trên xuống dưới (từ đèn xuống bàn).",
+   "capcut": "Scale 115%, Keyframe Position Y ở đầu và cuối clip.",
+   "demo": "demos/c-tilt.mp4",
+   "poster": "posters/c-tilt.jpg"
+  },
+  {
+   "id": "c-kenburns",
+   "group": "camera",
+   "name": "Ảnh tĩnh chuyển động",
+   "en": "Ken Burns",
+   "feel": "Ảnh không 'chết hình', có sự sống.",
+   "use": "Mọi ảnh tĩnh trên timeline; xen kẽ zoom vào và zoom ra.",
+   "avoid": "Ảnh có chữ cần đọc (giữ yên hoặc rất chậm).",
+   "prompt": "Ảnh tĩnh chuyển động (Ken Burns): mọi ảnh zoom chậm 1.04 → 1.15, ảnh sau ngược chiều ảnh trước.",
+   "capcut": "Keyframe Scale trên clip ảnh, đổi chiều ở ảnh kế tiếp.",
+   "demo": "demos/c-kenburns.mp4",
+   "poster": "posters/c-kenburns.jpg"
+  },
+  {
+   "id": "c-punch",
+   "group": "camera",
+   "name": "Giật zoom",
+   "en": "zoom punch, punch-in",
+   "feel": "Nhấn mạnh, bất ngờ, hài hước.",
+   "use": "Phách mạnh, câu nói quan trọng nhất; tối đa 3–4 lần mỗi video.",
+   "avoid": "Liên tục (người xem thấy giật).",
+   "prompt": "Giật zoom (zoom punch): trên phách mạnh, cắt cứng sang cùng cảnh phóng to 125%.",
+   "capcut": "Split clip đúng beat, phần sau Scale 125%.",
+   "demo": "demos/c-punch.mp4",
+   "poster": "posters/c-punch.jpg"
+  },
+  {
+   "id": "c-handheld",
+   "group": "camera",
+   "name": "Rung tay máy",
+   "en": "handheld shake",
+   "feel": "Chân thực, đời thường, như đang quay bằng điện thoại.",
+   "use": "Vlog, hậu trường, cảnh tĩnh cần thêm sự sống.",
+   "avoid": "Sản phẩm cao cấp, cảnh cần sang và tĩnh.",
+   "prompt": "Rung tay máy (handheld shake): khung hình rung nhẹ, không đều, biên độ nhỏ, scale 108%.",
+   "capcut": "Effects: Shake (nhẹ), hoặc nhiều keyframe Position lệch nhỏ.",
+   "demo": "demos/c-handheld.mp4",
+   "poster": "posters/c-handheld.jpg"
+  },
+  {
+   "id": "c-alternate",
+   "group": "camera",
+   "name": "Đổi chiều chuyển động",
+   "en": "alternating camera moves",
+   "feel": "Mạch hình chảy, có thiết kế, không nhàm.",
+   "use": "Chuỗi cảnh nhiều chuyển động: cảnh sau đi ngược chiều cảnh trước.",
+   "avoid": "Mọi cảnh cùng một kiểu chuyển động.",
+   "prompt": "Đổi chiều chuyển động (alternating camera moves): mỗi cảnh một chuyển động máy (lia, đẩy vào, tilt), cảnh sau ngược chiều cảnh trước.",
+   "capcut": "Keyframe Position/Scale trên từng clip, đổi hướng ở clip kế tiếp.",
+   "demo": "demos/c-alternate.mp4",
+   "poster": "posters/c-alternate.jpg"
+  },
+  {
+   "id": "t-cut",
+   "group": "transition",
+   "name": "Cắt thẳng",
+   "en": "hard cut",
+   "feel": "Dứt khoát, chuyên nghiệp. 90% điểm nối nên là cắt thẳng.",
+   "use": "Mặc định cho mọi điểm nối.",
+   "avoid": "Không có lúc nào sai; thiếu nhịp thì sửa nhịp, đừng thêm hiệu ứng.",
+   "prompt": "Cắt thẳng (hard cut) ở mọi điểm nối, chỉ dùng chuyển cảnh ở chỗ đổi ý lớn.",
+   "capcut": "Không thêm Transition.",
+   "demo": "demos/t-cut.mp4",
+   "poster": "posters/t-cut.jpg"
+  },
+  {
+   "id": "t-dissolve",
+   "group": "transition",
+   "name": "Hoà cảnh",
+   "en": "cross dissolve",
+   "feel": "Mềm, thời gian trôi, hồi tưởng.",
+   "use": "Video cảm xúc, chuyển thời gian (sáng → chiều).",
+   "avoid": "Clip theo nhạc nhanh (làm nhoè nhịp).",
+   "prompt": "Hoà cảnh (cross dissolve) 0.6 giây giữa hai cảnh lắng.",
+   "capcut": "Transitions: Mix, 0.6 s.",
+   "demo": "demos/t-dissolve.mp4",
+   "poster": "posters/t-dissolve.jpg"
+  },
+  {
+   "id": "t-flash",
+   "group": "transition",
+   "name": "Chớp trắng",
+   "en": "white flash",
+   "feel": "Bùng sáng, khởi đầu đoạn mới, cú drop.",
+   "use": "Đúng chỗ nhạc drop, một lần.",
+   "avoid": "Nhiều lần trong một video.",
+   "prompt": "Chớp trắng (white flash) đúng chỗ nhạc drop, kèm tiếng impact.",
+   "capcut": "Transitions: Flash (Chớp trắng), hoặc một clip trắng 2 khung.",
+   "demo": "demos/t-flash.mp4",
+   "poster": "posters/t-flash.jpg"
+  },
+  {
+   "id": "t-zoom",
+   "group": "transition",
+   "name": "Phóng vào chuyển cảnh",
+   "en": "zoom transition, pull in",
+   "feel": "Lao vào cảnh mới, năng động.",
+   "use": "Khi cảnh trước đang tiến vào (đẩy vào → phóng vào).",
+   "avoid": "Cảnh trước đang lùi ra (dùng kéo ra cho thuận).",
+   "prompt": "Phóng vào chuyển cảnh (zoom transition, pull in) ở chỗ đổi đoạn, thuận chiều chuyển động của cảnh trước.",
+   "capcut": "Transitions: Pull in.",
+   "demo": "demos/t-zoom.mp4",
+   "poster": "posters/t-zoom.jpg"
+  },
+  {
+   "id": "t-dip",
+   "group": "transition",
+   "name": "Hiện từ đen",
+   "en": "dip to black, fade in",
+   "feel": "Mở màn, ngắt chương, trang trọng.",
+   "use": "Mở đầu video hoặc sang chương mới.",
+   "avoid": "Giữa đoạn đang có nhịp.",
+   "prompt": "Hiện từ đen (fade in from black) 0.6 giây khi sang chương mới.",
+   "capcut": "Animation vào: Fade in, hoặc Transitions: Black fade.",
+   "demo": "demos/t-dip.mp4",
+   "poster": "posters/t-dip.jpg"
+  },
+  {
+   "id": "t-leak",
+   "group": "transition",
+   "name": "Ánh sáng lọt",
+   "en": "light leak overlay",
+   "feel": "Ấm, phim, mơ màng.",
+   "use": "Che điểm nối ở clip cảm xúc, lifestyle; 2–3 lần mỗi video.",
+   "avoid": "Video sản phẩm cần hình sạch.",
+   "prompt": "Ánh sáng lọt (light leak overlay, blend Screen) đặt giữa điểm nối lớn, dài khoảng 1 beat.",
+   "capcut": "Thêm clip light leak ở track trên (Overlay), Blend: Screen.",
+   "demo": "demos/t-leak.mp4",
+   "poster": "posters/t-leak.jpg"
+  },
+  {
+   "id": "t-burn",
+   "group": "transition",
+   "name": "Cháy phim",
+   "en": "film burn",
+   "feel": "Hoài niệm, phim cũ, mạnh hơn light leak.",
+   "use": "Clip thời trang, du lịch, kỷ niệm.",
+   "avoid": "Video giáo dục, sản phẩm.",
+   "prompt": "Cháy phim (film burn overlay, blend Screen) ở chỗ nối giữa hai đoạn.",
+   "capcut": "Overlay clip film burn, Blend: Screen.",
+   "demo": "demos/t-burn.mp4",
+   "poster": "posters/t-burn.jpg"
+  },
+  {
+   "id": "a-slowmo",
+   "group": "accent",
+   "name": "Quay chậm",
+   "en": "slow motion",
+   "feel": "Khoảnh khắc đắt, mượt, cuốn.",
+   "use": "Dòng chảy, giọt nước, quay đầu, ánh mắt.",
+   "avoid": "Footage 24–30 fps chậm hơn 0.5x (bị giật).",
+   "prompt": "Quay chậm (slow motion) 0.5x cho khoảnh khắc đẹp nhất, bắt đầu chậm ngay trước khoảnh khắc.",
+   "capcut": "Speed: 0.5x (Normal), bật Smooth slow-mo nếu có.",
+   "demo": "demos/a-slowmo.mp4",
+   "poster": "posters/a-slowmo.jpg"
+  },
+  {
+   "id": "a-ramp",
+   "group": "accent",
+   "name": "Đổi tốc nhanh → chậm",
+   "en": "speed ramp",
+   "feel": "Lao tới rồi khựng lại đúng khoảnh khắc, rất 'điện ảnh'.",
+   "use": "Hành động có điểm đến (rót đầy, chạm, nhảy).",
+   "avoid": "Cảnh không có hành động rõ.",
+   "prompt": "Đổi tốc (speed ramp): chạy nhanh 2x rồi chậm hẳn 0.5x đúng lúc khoảnh khắc xảy ra.",
+   "capcut": "Speed > Curve, kéo các điểm cao rồi thấp.",
+   "demo": "demos/a-ramp.mp4",
+   "poster": "posters/a-ramp.jpg"
+  },
+  {
+   "id": "a-reverse",
+   "group": "accent",
+   "name": "Tua ngược",
+   "en": "reverse, rewind",
+   "feel": "Bất ngờ, vui, 'quay ngược thời gian'.",
+   "use": "Dòng chảy, vật rơi, cảnh kết bất ngờ.",
+   "avoid": "Người đang nói, chữ trong hình.",
+   "prompt": "Tua ngược (reverse): chiếu cảnh rót xuôi rồi tua ngược lại đúng một beat.",
+   "capcut": "Chọn clip → Reverse.",
+   "demo": "demos/a-reverse.mp4",
+   "poster": "posters/a-reverse.jpg"
+  },
+  {
+   "id": "a-bw",
+   "group": "accent",
+   "name": "Đen trắng → màu",
+   "en": "black and white to color",
+   "feel": "Khoảnh khắc 'bừng sáng', ký ức sống lại.",
+   "use": "Một lần, đúng điểm nhấn mạnh nhất của nhạc.",
+   "avoid": "Nhiều lần; video không có điểm nhấn.",
+   "prompt": "Đen trắng → màu (black and white to color): cảnh bắt đầu đen trắng, màu bừng lên đúng phách mạnh.",
+   "capcut": "Adjust: Saturation keyframe -100 → 0.",
+   "demo": "demos/a-bw.mp4",
+   "poster": "posters/a-bw.jpg"
+  },
+  {
+   "id": "a-filmframe",
+   "group": "accent",
+   "name": "Khung phim",
+   "en": "film frame effect",
+   "feel": "Như thước phim cũ, có chất analog.",
+   "use": "Clip thời trang, du lịch, kỷ niệm; có thể phủ cả video.",
+   "avoid": "Video cần hình sạch, nhiều chữ.",
+   "prompt": "Khung phim (film frame effect) phủ suốt đoạn kỷ niệm.",
+   "capcut": "Effects: tìm 'film frame' (khung phim), kéo dài theo đoạn.",
+   "demo": "demos/a-filmframe.mp4",
+   "poster": "posters/a-filmframe.jpg"
+  },
+  {
+   "id": "a-sfx",
+   "group": "accent",
+   "name": "Âm nhấn",
+   "en": "sound effects: riser, impact, whoosh",
+   "feel": "Hình có lực. Bật tiếng để nghe demo.",
+   "use": "Riser trước drop, impact ở drop, whoosh ở chuyển cảnh; tối đa 4–6 tiếng.",
+   "avoid": "Gắn tiếng cho mọi thứ.",
+   "prompt": "Âm nhấn (sound effects): riser dâng tới drop, impact đúng drop, whoosh ở chuyển cảnh; nhỏ hơn nhạc.",
+   "capcut": "Audio > Sound effects: tìm whoosh, impact, riser.",
+   "demo": "demos/a-sfx.mp4",
+   "poster": "posters/a-sfx.jpg"
+  },
+  {
+   "id": "l-warm",
+   "group": "look",
+   "name": "Ấm",
+   "en": "warm look",
+   "feel": "Thân mật, buổi sáng, hoài niệm.",
+   "use": "Đồ ăn, cà phê, gia đình, kỷ niệm.",
+   "avoid": "Công nghệ, y tế.",
+   "prompt": "Tông màu ấm (warm look) cho cả video.",
+   "capcut": "Adjust: Temperature +, Saturation + nhẹ.",
+   "demo": "demos/l-warm.mp4",
+   "poster": "posters/l-warm.jpg"
+  },
+  {
+   "id": "l-cool",
+   "group": "look",
+   "name": "Lạnh",
+   "en": "cool look",
+   "feel": "Sạch, hiện đại, tĩnh, hơi cô đơn.",
+   "use": "Công nghệ, mỹ phẩm sạch, đêm thành phố.",
+   "avoid": "Đồ ăn (trông kém ngon).",
+   "prompt": "Tông màu lạnh (cool look) cho cả video.",
+   "capcut": "Adjust: Temperature −.",
+   "demo": "demos/l-cool.mp4",
+   "poster": "posters/l-cool.jpg"
+  },
+  {
+   "id": "l-cinematic",
+   "group": "look",
+   "name": "Điện ảnh",
+   "en": "cinematic look",
+   "feel": "Trầm, sang, nghiêm túc.",
+   "use": "Câu chuyện, thương hiệu cao cấp, phim ngắn.",
+   "avoid": "Video vui, trẻ em.",
+   "prompt": "Tông điện ảnh (cinematic look): giảm bão hoà, tăng tương phản, tối nhẹ.",
+   "capcut": "Adjust: Saturation −15, Contrast +15, Brightness −5.",
+   "demo": "demos/l-cinematic.mp4",
+   "poster": "posters/l-cinematic.jpg"
+  },
+  {
+   "id": "l-bw",
+   "group": "look",
+   "name": "Đen trắng",
+   "en": "black and white",
+   "feel": "Cổ điển, ký ức, nghệ thuật.",
+   "use": "Hồi tưởng, chân dung, đoạn đối lập với màu.",
+   "avoid": "Đồ ăn, sản phẩm cần màu thật.",
+   "prompt": "Đen trắng (black and white) cho đoạn hồi tưởng.",
+   "capcut": "Adjust: Saturation −100, Contrast + nhẹ.",
+   "demo": "demos/l-bw.mp4",
+   "poster": "posters/l-bw.jpg"
+  }
+ ],
+ "presets": [
+  {
+   "id": "energy",
+   "name": "Năng lượng cao",
+   "for": "quảng cáo ngắn, trend",
+   "cards": [
+    "r-beat",
+    "r-montage",
+    "c-punch",
+    "t-flash",
+    "a-sfx",
+    "c-alternate"
+   ]
+  },
+  {
+   "id": "emotion",
+   "name": "Cảm xúc, kể chuyện",
+   "for": "câu chuyện, gia đình, kỷ niệm",
+   "cards": [
+    "r-slow",
+    "c-push",
+    "t-dissolve",
+    "a-slowmo",
+    "l-warm"
+   ]
+  },
+  {
+   "id": "premium",
+   "name": "Sang trọng",
+   "for": "sản phẩm cao cấp, mỹ phẩm",
+   "cards": [
+    "r-alternate",
+    "c-push",
+    "c-pan",
+    "a-ramp",
+    "t-dip",
+    "l-cinematic"
+   ]
+  },
+  {
+   "id": "nostalgia",
+   "name": "Hoài niệm, phim",
+   "for": "du lịch, thời trang, kỷ niệm",
+   "cards": [
+    "c-handheld",
+    "t-burn",
+    "a-filmframe",
+    "a-bw",
+    "r-beat"
+   ]
+  },
+  {
+   "id": "qw2",
+   "name": "Như demo QW2",
+   "for": "clip stock cà phê 15 giây",
+   "cards": [
+    "r-tension",
+    "r-montage",
+    "c-alternate",
+    "t-flash",
+    "t-leak",
+    "a-sfx",
+    "c-kenburns"
+   ]
+  }
+ ],
+ "prompt_head": "Edit project <tên project> theo hồ sơ music-clip, chế độ auto. Dùng các kỹ thuật dưới đây (tên tiếng Anh trong ngoặc để AI hiểu đúng), mỗi kỹ thuật đặt đúng chỗ ghi trong intent.md, không rải đều:",
+ "prompt_tail": "Chạy preview và qc, rồi cutkit draft ra project CapCut. Báo: kỹ thuật nào dùng ở giây nào và vì sao."
+};

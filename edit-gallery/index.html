@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Từ điển dựng phim</title>
+<meta name="description" content="Các kiểu nhịp, chuyển động máy, chuyển cảnh, nhấn và tông màu, mỗi kiểu một demo và một dòng prompt để chọn.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1 id="title">Từ điển dựng phim</h1>
+    <p id="intro" class="intro"></p>
+    <div class="bar">
+      <input id="q" type="search" placeholder="Tìm: đẩy vào, push in, hồi hộp…" aria-label="Tìm kỹ thuật">
+      <button id="sound" class="ghost" aria-pressed="false" title="Bật/tắt tiếng demo">🔇 Tiếng: tắt</button>
+    </div>
+    <nav id="groups" class="tabs" aria-label="Nhóm kỹ thuật"></nav>
+    <div class="presets"><span class="lbl">Công thức có sẵn:</span><span id="presets"></span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <p id="lead" class="lead"></p>
+  <section id="grid" class="grid" aria-live="polite"></section>
+  <p id="empty" class="empty" hidden>Không có kỹ thuật nào khớp. Thử từ khác, tiếng Việt hoặc tiếng Anh.</p>
+</main>
+
+<aside id="tray" class="tray" aria-label="Prompt đã ghép">
+  <button id="tray-toggle" class="tray-head" aria-expanded="false">
+    <span>Prompt của bạn</span><b id="count">0</b><span class="hint">kỹ thuật đã chọn</span><span class="chev">▴</span>
+  </button>
+  <div class="tray-body">
+    <label class="proj">Tên project <input id="proj" type="text" placeholder="qw2-stock"></label>
+    <div id="chips" class="chips"></div>
+    <textarea id="out" rows="10" spellcheck="false" aria-label="Prompt ghép sẵn"></textarea>
+    <div class="row">
+      <button id="copy" class="primary">Chép prompt</button>
+      <button id="clear" class="ghost">Bỏ chọn hết</button>
+      <span id="copied" class="ok" hidden>Đã chép ✓</span>
+    </div>
+    <p class="note">Dán vào Claude Code trong thư mục studio. Sửa tự do: thêm "ở giây nào", "cảnh nào" cho từng kỹ thuật.</p>
+  </div>
+</aside>
+
+<footer class="wrap foot">
+  Demo dựng bằng <b>cutkit</b> (cùng bộ render với bản xem trước), footage Pexels + Unsplash (<a href="CREDITS.md">ghi công</a>), nhạc beat tự tạo.
+  Gợi ý "Trong CapCut" theo tên menu tiếng Anh, có thể khác theo phiên bản.
+</footer>
+
+<dialog id="dlg" aria-labelledby="d-name">
+  <div class="d-media"><video id="d-video" playsinline controls loop preload="none"></video></div>
+  <div class="d-body">
+    <p class="kicker" id="d-group"></p>
+    <h2 id="d-name"></h2>
+    <p class="en" id="d-en"></p>
+    <dl>
+      <dt>Cảm giác</dt><dd id="d-feel"></dd>
+      <dt>Dùng khi</dt><dd id="d-use"></dd>
+      <dt>Tránh</dt><dd id="d-avoid"></dd>
+      <dt>Trong CapCut</dt><dd id="d-capcut"></dd>
+    </dl>
+    <p class="plabel">Dòng prompt</p>
+    <pre id="d-prompt"></pre>
+    <div class="row">
+      <button id="d-pick" class="primary"></button>
+      <button id="d-copy" class="ghost">Chép dòng này</button>
+      <button id="d-close" class="ghost">Đóng</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="cards.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
