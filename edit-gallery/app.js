@@ -16,11 +16,17 @@
 
   // group tabs
   const tabs = $("#groups");
-  [{ id: "all", name: "Tất cả", en: "All" }, ...G.groups].forEach((g) => {
+  const tab = (id, html, cls) => {
     const b = document.createElement("button");
-    b.dataset.g = g.id; b.innerHTML = `${g.name}<small>${g.en}</small>`;
-    b.onclick = () => { group = g.id; render(); };
+    b.dataset.g = id; b.innerHTML = html; if (cls) b.className = cls;
+    b.onclick = () => { group = id; render(); };
     tabs.append(b);
+  };
+  tab("all", "Tất cả<small>All</small>");
+  (G.sections || [{ id: "technique", name: "" }]).forEach((sec, k) => {
+    if (k) { const br = document.createElement("span"); br.className = "br"; tabs.append(br); }   // one row per section
+    if (sec.name) tab("s:" + sec.id, sec.name, "sec");
+    G.groups.filter((g) => (g.section || "technique") === sec.id).forEach((g) => tab(g.id, `${g.name}<small>${g.en}</small>`));
   });
 
   // presets
@@ -74,11 +80,12 @@
 
   function render() {
     tabs.querySelectorAll("button").forEach((b) => b.setAttribute("aria-current", b.dataset.g === group));
-    $("#lead").textContent = group === "all" ? "" : groupOf[group].lead;
+    $("#lead").textContent = groupOf[group] ? groupOf[group].lead : "";
     let n = 0;
     els.forEach((el) => {
       const c = byId[el.dataset.id];
-      const show = (group === "all" || c.group === group) && (!query || query.split(/\s+/).every((w) => el._hay.includes(w)));
+      const inGroup = group === "all" || c.group === group || group === "s:" + (groupOf[c.group].section || "technique");
+      const show = inGroup && (!query || query.split(/\s+/).every((w) => el._hay.includes(w)));
       el.hidden = !show; n += show;
     });
     $("#empty").hidden = n > 0;

@@ -7,7 +7,7 @@ Video nén 540p cho trang; bản xuất của template là 1080p.
 
 ## Từ điển dựng phim
 
-Các kiểu nhịp, chuyển động máy, chuyển cảnh, nhấn và tông màu, mỗi kiểu một demo và một dòng prompt để chọn rồi ghép thành prompt cho AI:
+Kỹ thuật dựng (nhịp, chuyển động máy, chuyển cảnh, nhấn, tông màu) và thành phần trong video (phụ đề, chữ, đồ hoạ, bố cục, lớp hoàn thiện), mỗi thứ một demo và một dòng prompt để chọn rồi ghép thành prompt cho AI:
 https://ai-native-lab.github.io/video-templates-showcase/edit-gallery/
 
 Demo dựng từ footage Pexels + Unsplash (ghi công trong `edit-gallery/CREDITS.md`), nhạc beat tự tạo.

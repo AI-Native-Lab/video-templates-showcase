@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Từ điển dựng phim</title>
-<meta name="description" content="Các kiểu nhịp, chuyển động máy, chuyển cảnh, nhấn và tông màu, mỗi kiểu một demo và một dòng prompt để chọn.">
+<meta name="description" content="Kỹ thuật dựng (nhịp, chuyển động máy, chuyển cảnh, nhấn, tông màu) và thành phần trong video (phụ đề, chữ, đồ hoạ, bố cục, lớp hoàn thiện), mỗi thứ một demo và một dòng prompt để chọn.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
     <h1 id="title">Từ điển dựng phim</h1>
     <p id="intro" class="intro"></p>
     <div class="bar">
-      <input id="q" type="search" placeholder="Tìm: đẩy vào, push in, hồi hộp…" aria-label="Tìm kỹ thuật">
+      <input id="q" type="search" placeholder="Tìm: đẩy vào, phụ đề, lower third, hồi hộp…" aria-label="Tìm kỹ thuật hoặc thành phần">
       <button id="sound" class="ghost" aria-pressed="false" title="Bật/tắt tiếng demo">🔇 Tiếng: tắt</button>
     </div>
     <nav id="groups" class="tabs" aria-label="Nhóm kỹ thuật"></nav>
@@ -29,7 +29,7 @@
 
 <aside id="tray" class="tray" aria-label="Prompt đã ghép">
   <button id="tray-toggle" class="tray-head" aria-expanded="false">
-    <span>Prompt của bạn</span><b id="count">0</b><span class="hint">kỹ thuật đã chọn</span><span class="chev">▴</span>
+    <span>Prompt của bạn</span><b id="count">0</b><span class="hint">mục đã chọn</span><span class="chev">▴</span>
   </button>
   <div class="tray-body">
     <label class="proj">Tên project <input id="proj" type="text" placeholder="qw2-stock"></label>
@@ -45,7 +45,7 @@
 </aside>
 
 <footer class="wrap foot">
-  Demo dựng bằng <b>cutkit</b> (cùng bộ render với bản xem trước), footage Pexels + Unsplash (<a href="CREDITS.md">ghi công</a>), nhạc beat tự tạo.
+  Demo kỹ thuật dựng bằng <b>cutkit</b>, demo thành phần bằng <b>HyperFrames</b>, footage Pexels + Unsplash (<a href="CREDITS.md">ghi công</a>), nhạc beat tự tạo.
   Gợi ý "Trong CapCut" theo tên menu tiếng Anh, có thể khác theo phiên bản.
 </footer>
 

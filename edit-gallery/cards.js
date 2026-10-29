@@ -1,36 +1,76 @@
 window.GALLERY = {
  "title": "Từ điển dựng phim",
- "intro": "Chưa biết gọi tên kỹ thuật thì chưa viết được prompt. Xem demo, chọn thứ mình muốn, trang ghép sẵn prompt để dán cho AI.",
+ "intro": "Chưa biết gọi tên thì chưa viết được prompt. Xem demo các kỹ thuật dựng và các thành phần trong video (phụ đề, chữ, đồ hoạ, bố cục), chọn thứ mình muốn, trang ghép sẵn prompt để dán cho AI.",
  "groups": [
   {
    "id": "rhythm",
    "name": "Nhịp",
    "en": "Pacing",
-   "lead": "Cắt ở đâu, mỗi cảnh dài bao lâu. Nhịp quyết định video gấp hay lắng."
+   "lead": "Cắt ở đâu, mỗi cảnh dài bao lâu. Nhịp quyết định video gấp hay lắng.",
+   "section": "technique"
   },
   {
    "id": "camera",
    "name": "Chuyển động máy",
    "en": "Camera moves",
-   "lead": "Khung hình di chuyển thế nào trong một cảnh. Mỗi kiểu nói một điều khác nhau."
+   "lead": "Khung hình di chuyển thế nào trong một cảnh. Mỗi kiểu nói một điều khác nhau.",
+   "section": "technique"
   },
   {
    "id": "transition",
    "name": "Chuyển cảnh",
    "en": "Transitions",
-   "lead": "Cách nối hai cảnh. Cắt thẳng là mặc định; chuyển cảnh chỉ dùng ở chỗ đổi ý lớn."
+   "lead": "Cách nối hai cảnh. Cắt thẳng là mặc định; chuyển cảnh chỉ dùng ở chỗ đổi ý lớn.",
+   "section": "technique"
   },
   {
    "id": "accent",
    "name": "Nhấn & tốc độ",
    "en": "Accents & speed",
-   "lead": "Gia vị cho khoảnh khắc đắt nhất. Dùng ít mới có tác dụng."
+   "lead": "Gia vị cho khoảnh khắc đắt nhất. Dùng ít mới có tác dụng.",
+   "section": "technique"
   },
   {
    "id": "look",
    "name": "Tông màu",
    "en": "Color looks",
-   "lead": "Một tông cho cả video. Demo: nửa đầu là hình gốc, nửa sau có tông."
+   "lead": "Một tông cho cả video. Demo: nửa đầu là hình gốc, nửa sau có tông.",
+   "section": "technique"
+  },
+  {
+   "id": "caption",
+   "section": "element",
+   "name": "Phụ đề",
+   "en": "Captions",
+   "lead": "Phần lớn người xem lướt mạng xã hội không bật tiếng. Phụ đề là hình, không chỉ là chữ."
+  },
+  {
+   "id": "title",
+   "section": "element",
+   "name": "Chữ & tiêu đề",
+   "en": "Titles & text",
+   "lead": "Chữ dẫn chuyện: hook mở đầu, tên người, chương, lời kêu gọi cuối video."
+  },
+  {
+   "id": "graphic",
+   "section": "element",
+   "name": "Đồ hoạ thông tin",
+   "en": "Info graphics",
+   "lead": "Chỉ cho người xem nhìn vào đâu và nhớ con số nào."
+  },
+  {
+   "id": "layout",
+   "section": "element",
+   "name": "Bố cục khung",
+   "en": "Layouts",
+   "lead": "Đặt nhiều hình trong một khung dọc: so sánh, người nói kèm minh hoạ, clip ngang."
+  },
+  {
+   "id": "finish",
+   "section": "element",
+   "name": "Lớp hoàn thiện",
+   "en": "Finishing layers",
+   "lead": "Lớp phủ cuối cùng làm video trông có tay nghề và an toàn khi đăng."
   }
  ],
  "cards": [
@@ -449,6 +489,344 @@ window.GALLERY = {
    "capcut": "Adjust: Saturation −100, Contrast + nhẹ.",
    "demo": "demos/l-bw.mp4",
    "poster": "posters/l-bw.jpg"
+  },
+  {
+   "id": "cap-karaoke",
+   "group": "caption",
+   "name": "Phụ đề karaoke",
+   "en": "karaoke captions, word highlight",
+   "feel": "Mắt bám theo lời, xem không tiếng vẫn theo kịp.",
+   "use": "Video có giọng đọc hoặc người nói; dạng phổ biến nhất trên TikTok, Reels.",
+   "avoid": "Chữ quá nhỏ hoặc quá nhiều chữ một dòng.",
+   "prompt": "Phụ đề karaoke (karaoke captions): 3–4 chữ một dòng, chữ sáng màu vàng đúng lúc được đọc, viền đen, đặt trên vùng caption của nền tảng.",
+   "capcut": "Captions > Auto captions, chọn kiểu phụ đề có highlight từng chữ.",
+   "demo": "demos/cap-karaoke.mp4",
+   "poster": "posters/cap-karaoke.jpg"
+  },
+  {
+   "id": "cap-pop",
+   "group": "caption",
+   "name": "Chữ bật từng từ",
+   "en": "word-by-word pop captions",
+   "feel": "Năng lượng cao, nhịp nhanh, giữ mắt ở giữa khung.",
+   "use": "Hook, video trend, câu ngắn đọc nhanh.",
+   "avoid": "Đoạn giải thích dài (mỏi mắt).",
+   "prompt": "Chữ bật từng từ (word pop captions): mỗi lần 1–2 chữ thật to giữa khung, bật lên theo nhịp lời, từ khoá đổi màu.",
+   "capcut": "Auto captions, chỉnh mỗi đoạn 1–2 chữ; Animation vào: Pop.",
+   "demo": "demos/cap-pop.mp4",
+   "poster": "posters/cap-pop.jpg"
+  },
+  {
+   "id": "cap-keyword",
+   "group": "caption",
+   "name": "Tô màu từ khoá",
+   "en": "keyword highlight",
+   "feel": "Người xem nhớ đúng một ý quan trọng nhất của câu.",
+   "use": "Câu có một từ đắt (giá, tên món, con số).",
+   "avoid": "Tô màu mọi câu (mất tác dụng).",
+   "prompt": "Tô màu từ khoá (keyword highlight): trong mỗi câu chọn 1 từ quan trọng nhất, tô nền vàng quét từ trái sang và nảy nhẹ.",
+   "capcut": "Bôi đen từ trong phụ đề, đổi màu chữ hoặc bật Background riêng cho từ đó.",
+   "demo": "demos/cap-keyword.mp4",
+   "poster": "posters/cap-keyword.jpg"
+  },
+  {
+   "id": "cap-boxed",
+   "group": "caption",
+   "name": "Phụ đề nền hộp",
+   "en": "boxed subtitles",
+   "feel": "Sạch, dễ đọc trên mọi nền, trông như phim tài liệu.",
+   "use": "Phỏng vấn, kể chuyện, nền nhiều chi tiết.",
+   "avoid": "Video trend cần năng lượng cao.",
+   "prompt": "Phụ đề nền hộp (boxed subtitles): tối đa 2 dòng, chữ trắng trên hộp đen mờ bo góc, chuyển câu theo nhịp nói.",
+   "capcut": "Text > Style > Background, giảm Opacity, bo góc.",
+   "demo": "demos/cap-boxed.mp4",
+   "poster": "posters/cap-boxed.jpg"
+  },
+  {
+   "id": "cap-emoji",
+   "group": "caption",
+   "name": "Phụ đề kèm emoji",
+   "en": "captions with emoji",
+   "feel": "Vui, gần gũi, nhấn cảm xúc của từ.",
+   "use": "Ẩm thực, lifestyle, khán giả trẻ.",
+   "avoid": "Thương hiệu sang trọng, nội dung nghiêm túc.",
+   "prompt": "Phụ đề kèm emoji (emoji captions): emoji hợp nghĩa bật ra cạnh từ khoá, mỗi câu tối đa 1 emoji.",
+   "capcut": "Gõ emoji ngay trong Text, hoặc thêm Sticker emoji cạnh phụ đề.",
+   "demo": "demos/cap-emoji.mp4",
+   "poster": "posters/cap-emoji.jpg"
+  },
+  {
+   "id": "txt-hook",
+   "group": "title",
+   "name": "Chữ hook 3 giây đầu",
+   "en": "hook text",
+   "feel": "Chặn ngón tay đang lướt.",
+   "use": "Mọi video ngắn: câu hỏi, con số, điều bất ngờ trong 3 giây đầu.",
+   "avoid": "Câu dài hơn 6–7 chữ.",
+   "prompt": "Chữ hook (hook text): 3–6 chữ thật to ở 1/3 trên khung trong 3 giây đầu, đập vào bằng zoom và rung nhẹ, 1 từ trên nền vàng.",
+   "capcut": "Text cỡ lớn ở 0–3 s, Animation vào: Zoom in hoặc Pop.",
+   "demo": "demos/txt-hook.mp4",
+   "poster": "posters/txt-hook.jpg"
+  },
+  {
+   "id": "txt-kinetic",
+   "group": "title",
+   "name": "Chữ chuyển động",
+   "en": "kinetic typography",
+   "feel": "Chữ cũng là hình, có nhịp như nhạc.",
+   "use": "Video không có giọng, quảng cáo ngắn, câu khẩu hiệu.",
+   "avoid": "Đoạn chữ dài cần đọc kỹ.",
+   "prompt": "Chữ chuyển động (kinetic typography): từng cụm chữ bay vào theo beat (phóng to, trượt ngang, trồi lên), cụm cuối đổi màu.",
+   "capcut": "Mỗi cụm chữ một lớp Text, mỗi lớp Animation vào khác nhau, đặt đúng chấm Beat.",
+   "demo": "demos/txt-kinetic.mp4",
+   "poster": "posters/txt-kinetic.jpg"
+  },
+  {
+   "id": "txt-lower",
+   "group": "title",
+   "name": "Thanh tên",
+   "en": "lower third, name tag",
+   "feel": "Chuyên nghiệp như truyền hình; người xem biết ai đang nói.",
+   "use": "Lần đầu một người xuất hiện, chuyên gia, khách mời.",
+   "avoid": "Che mặt hoặc che phụ đề.",
+   "prompt": "Thanh tên (lower third): tên + vai trò trượt vào ở góc dưới trái khi người đó xuất hiện, giữ 3 giây rồi trượt ra.",
+   "capcut": "Text > Templates tìm 'lower third', hoặc Text + Shape nền.",
+   "demo": "demos/txt-lower.mp4",
+   "poster": "posters/txt-lower.jpg"
+  },
+  {
+   "id": "txt-chapter",
+   "group": "title",
+   "name": "Thẻ chương",
+   "en": "chapter title card",
+   "feel": "Ngắt nhịp rõ ràng, video có cấu trúc.",
+   "use": "Video dài hơn 45 giây có nhiều phần, top list.",
+   "avoid": "Clip 15 giây.",
+   "prompt": "Thẻ chương (chapter title card): hình tối lại, số chương viền + tên chương nghiêng + một đường kẻ mở ra, giữ 2–3 giây.",
+   "capcut": "Overlay nền đen 50% + Text số và tên chương, Animation Fade.",
+   "demo": "demos/txt-chapter.mp4",
+   "poster": "posters/txt-chapter.jpg"
+  },
+  {
+   "id": "txt-cta",
+   "group": "title",
+   "name": "Thẻ kêu gọi cuối",
+   "en": "end card, call to action",
+   "feel": "Biến người xem thành người theo dõi.",
+   "use": "3 giây cuối mọi video: theo dõi, xem phần 2, inbox.",
+   "avoid": "Hô hào ở đầu video.",
+   "prompt": "Thẻ kêu gọi cuối (end card CTA): 3 giây cuối, nền tối dần, một câu nói lợi ích + nút theo dõi nhịp nhịp + tên tài khoản.",
+   "capcut": "Text templates 'follow' + Sticker mũi tên, đặt ở cuối.",
+   "demo": "demos/txt-cta.mp4",
+   "poster": "posters/txt-cta.jpg"
+  },
+  {
+   "id": "g-callout",
+   "group": "graphic",
+   "name": "Mũi tên khoanh",
+   "en": "callout arrow and circle",
+   "feel": "Mắt người xem đi đúng chỗ bạn muốn.",
+   "use": "Chi tiết nhỏ dễ bỏ qua: nhiệt độ, thành phần, nút bấm.",
+   "avoid": "Nhiều mũi tên cùng lúc.",
+   "prompt": "Mũi tên khoanh (callout arrow + circle): nhãn ngắn, mũi tên vẽ dần tới chi tiết rồi vòng tròn khoanh quanh nó.",
+   "capcut": "Stickers: Arrow, Circle; Keyframe vị trí cho khớp chi tiết.",
+   "demo": "demos/g-callout.mp4",
+   "poster": "posters/g-callout.jpg"
+  },
+  {
+   "id": "g-spotlight",
+   "group": "graphic",
+   "name": "Đèn rọi",
+   "en": "spotlight focus",
+   "feel": "Mọi thứ khác tối đi, chỉ còn một điểm sáng.",
+   "use": "Một chi tiết quan trọng giữa khung nhiều thứ.",
+   "avoid": "Chủ thể di chuyển nhanh.",
+   "prompt": "Đèn rọi (spotlight): cả khung tối dần, chỉ chừa vòng sáng quanh chi tiết, kèm 1 dòng chữ.",
+   "capcut": "Overlay đen + Mask Circle (Invert), Keyframe kích thước vòng.",
+   "demo": "demos/g-spotlight.mp4",
+   "poster": "posters/g-spotlight.jpg"
+  },
+  {
+   "id": "g-counter",
+   "group": "graphic",
+   "name": "Số đếm lớn",
+   "en": "animated number counter",
+   "feel": "Con số 'chạy' làm người xem thấy nó lớn.",
+   "use": "Thành tích, thống kê, giá trị; một con số mỗi cảnh.",
+   "avoid": "Số không có nguồn.",
+   "prompt": "Số đếm lớn (number counter): con số chạy từ 0 lên giá trị thật, chữ thật to, đơn vị ở dưới, nảy nhẹ khi dừng.",
+   "capcut": "Không có sẵn: nhờ AI dựng (HyperFrames) rồi đưa vào CapCut như overlay.",
+   "demo": "demos/g-counter.mp4",
+   "poster": "posters/g-counter.jpg"
+  },
+  {
+   "id": "g-progress",
+   "group": "graphic",
+   "name": "Thanh tiến độ",
+   "en": "progress bar, step indicator",
+   "feel": "Người xem biết còn bao lâu, dễ xem hết.",
+   "use": "Hướng dẫn nhiều bước, top list, video dài.",
+   "avoid": "Clip 10 giây.",
+   "prompt": "Thanh tiến độ (progress bar): thanh mảnh trên cùng chạy theo video + nhãn 'Bước 1/3' đổi theo từng phần.",
+   "capcut": "Shape thanh ngang + Keyframe độ dài; Text nhãn từng bước.",
+   "demo": "demos/g-progress.mp4",
+   "poster": "posters/g-progress.jpg"
+  },
+  {
+   "id": "g-chart",
+   "group": "graphic",
+   "name": "Biểu đồ mọc",
+   "en": "animated bar chart",
+   "feel": "Số liệu dễ so sánh trong 2 giây.",
+   "use": "So sánh 3–5 mục có số liệu thật.",
+   "avoid": "Số liệu bịa; quá 5 cột.",
+   "prompt": "Biểu đồ mọc (animated bar chart): 3–5 thanh mọc lần lượt, số chạy theo, nền khung mờ phía sau, ghi nguồn số liệu.",
+   "capcut": "Không có sẵn: nhờ AI dựng rồi đưa vào như overlay.",
+   "demo": "demos/g-chart.mp4",
+   "poster": "posters/g-chart.jpg"
+  },
+  {
+   "id": "g-sticker",
+   "group": "graphic",
+   "name": "Sticker bật",
+   "en": "sticker pop",
+   "feel": "Vui, bắt mắt, nhấn khuyến mãi.",
+   "use": "Bán hàng, ra mắt món mới, giảm giá.",
+   "avoid": "Video sang trọng, quá 3 sticker một cảnh.",
+   "prompt": "Sticker bật (sticker pop): nhãn 'MỚI!', '-20%', biểu tượng bật ra có nảy và lắc nhẹ, từng cái một.",
+   "capcut": "Stickers + Animation vào: Pop / Bounce.",
+   "demo": "demos/g-sticker.mp4",
+   "poster": "posters/g-sticker.jpg"
+  },
+  {
+   "id": "g-checklist",
+   "group": "graphic",
+   "name": "Danh sách tích",
+   "en": "animated checklist",
+   "feel": "Rõ ràng, dễ làm theo, thoả mãn khi tích.",
+   "use": "Mẹo, hướng dẫn, 'cần chuẩn bị gì'.",
+   "avoid": "Hơn 5 dòng.",
+   "prompt": "Danh sách tích (checklist): bảng trắng 3–5 dòng, mỗi dòng hiện ra rồi được tích xanh đúng beat.",
+   "capcut": "Text từng dòng + Sticker tick, mỗi dòng vào một beat.",
+   "demo": "demos/g-checklist.mp4",
+   "poster": "posters/g-checklist.jpg"
+  },
+  {
+   "id": "g-labels",
+   "group": "graphic",
+   "name": "Nhãn chú thích",
+   "en": "callout labels",
+   "feel": "Giải thích từng bộ phận ngay trên hình.",
+   "use": "Sản phẩm, dụng cụ, món ăn có nhiều thành phần.",
+   "avoid": "Chủ thể chuyển động nhiều.",
+   "prompt": "Nhãn chú thích (callout labels): chấm tròn ở từng bộ phận, đường kẻ vẽ ra, nhãn tên hiện lần lượt.",
+   "capcut": "Text + Shape đường kẻ + chấm tròn; Keyframe nếu vật di chuyển.",
+   "demo": "demos/g-labels.mp4",
+   "poster": "posters/g-labels.jpg"
+  },
+  {
+   "id": "l-split",
+   "group": "layout",
+   "name": "Chia đôi màn hình",
+   "en": "split screen",
+   "feel": "So sánh tức thì, không cần lời.",
+   "use": "Trước/sau, A vs B, đá vs nóng.",
+   "avoid": "Hai clip cùng màu, cùng bố cục (khó phân biệt).",
+   "prompt": "Chia đôi màn hình (split screen): hai clip trên dưới, trượt vào từ hai phía, vạch trắng ở giữa, nhãn mỗi nửa.",
+   "capcut": "Overlay clip thứ hai, Mask Linear hoặc Layout chia đôi.",
+   "demo": "demos/l-split.mp4",
+   "poster": "posters/l-split.jpg"
+  },
+  {
+   "id": "l-pip",
+   "group": "layout",
+   "name": "Hình trong hình",
+   "en": "picture in picture",
+   "feel": "Vừa thấy người vừa thấy thứ họ nói tới.",
+   "use": "Người nói + minh hoạ, reaction, hướng dẫn.",
+   "avoid": "Ô nhỏ che chi tiết quan trọng.",
+   "prompt": "Hình trong hình (picture in picture): khung nhỏ bo góc viền trắng ở góc trên phải, trượt vào khi cần.",
+   "capcut": "Overlay, Scale nhỏ, Mask Rectangle bo góc, thêm Stroke.",
+   "demo": "demos/l-pip.mp4",
+   "poster": "posters/l-pip.jpg"
+  },
+  {
+   "id": "l-blurfill",
+   "group": "layout",
+   "name": "Khung ngang nền mờ",
+   "en": "blurred background fill",
+   "feel": "Clip ngang vẫn đầy khung dọc, không viền đen.",
+   "use": "Footage 16:9 đăng TikTok, Reels.",
+   "avoid": "Khi cắt được sang dọc mà không mất chủ thể.",
+   "prompt": "Khung ngang nền mờ (blurred background fill): clip 16:9 ở giữa, nền là chính clip đó phóng to, làm mờ, tối đi.",
+   "capcut": "Canvas > Blur (nền mờ) cho clip ngang trong khung 9:16.",
+   "demo": "demos/l-blurfill.mp4",
+   "poster": "posters/l-blurfill.jpg"
+  },
+  {
+   "id": "l-beforeafter",
+   "group": "layout",
+   "name": "Trước / sau kéo gạt",
+   "en": "before and after wipe",
+   "feel": "Thấy rõ khác biệt, rất 'đã'.",
+   "use": "Chỉnh màu, làm đẹp, sửa chữa, kết quả sản phẩm.",
+   "avoid": "Hai bản gần như giống nhau.",
+   "prompt": "Trước / sau kéo gạt (before/after wipe): cùng một cảnh, thanh gạt dọc chạy qua lại, nhãn TRƯỚC / SAU hai bên.",
+   "capcut": "Overlay bản đã chỉnh, Mask Linear dọc + Keyframe vị trí.",
+   "demo": "demos/l-beforeafter.mp4",
+   "poster": "posters/l-beforeafter.jpg"
+  },
+  {
+   "id": "f-grain",
+   "group": "finish",
+   "name": "Hạt phim + vignette",
+   "en": "film grain and vignette",
+   "feel": "Ấm, có chất phim, bớt 'sạch như điện thoại'.",
+   "use": "Lifestyle, kỷ niệm, thời trang, cà phê.",
+   "avoid": "Video sản phẩm cần hình sắc nét.",
+   "prompt": "Hạt phim + vignette (film grain, vignette): phủ hạt phim nhẹ và tối dần 4 góc cho cả video.",
+   "capcut": "Effects: Film grain; Adjust: Vignette.",
+   "demo": "demos/f-grain.mp4",
+   "poster": "posters/f-grain.jpg"
+  },
+  {
+   "id": "f-letterbox",
+   "group": "finish",
+   "name": "Viền điện ảnh",
+   "en": "letterbox, cinematic bars",
+   "feel": "Trang trọng, như mở đầu một bộ phim.",
+   "use": "Mở đầu, cảnh chuyển chương, video thương hiệu.",
+   "avoid": "Cả video dọc (mất nhiều diện tích).",
+   "prompt": "Viền điện ảnh (letterbox bars): hai dải đen trượt vào trên dưới ở cảnh mở, tên chương nằm trong dải dưới.",
+   "capcut": "Effects: Letterbox / Cinematic, hoặc 2 Shape đen.",
+   "demo": "demos/f-letterbox.mp4",
+   "poster": "posters/f-letterbox.jpg"
+  },
+  {
+   "id": "f-safezone",
+   "group": "finish",
+   "name": "Vùng an toàn",
+   "en": "safe zones",
+   "feel": "Chữ không bị nút và tên kênh che mất.",
+   "use": "Kiểm tra mọi video trước khi đăng TikTok, Reels, Shorts.",
+   "avoid": "Đặt chữ quan trọng ở mép dưới hoặc mép phải.",
+   "prompt": "Vùng an toàn (safe zones): mọi chữ và chi tiết quan trọng nằm trong vùng giữa; tránh dải trên, cột nút bên phải và khoảng 1/4 dưới.",
+   "capcut": "Bật lưới hoặc xem thử trên điện thoại; tự tránh mép dưới và mép phải.",
+   "demo": "demos/f-safezone.mp4",
+   "poster": "posters/f-safezone.jpg"
+  },
+  {
+   "id": "f-watermark",
+   "group": "finish",
+   "name": "Logo góc",
+   "en": "watermark, logo bug",
+   "feel": "Nhận diện thương hiệu, khó bị lấy lại video.",
+   "use": "Mọi video của kênh, thương hiệu.",
+   "avoid": "Logo to, đậm, che hình.",
+   "prompt": "Logo góc (watermark): logo nhỏ, mờ 70–80%, ở góc trên phải dưới thanh trên cùng, suốt video.",
+   "capcut": "Overlay ảnh logo PNG ở góc, Opacity 70–80%.",
+   "demo": "demos/f-watermark.mp4",
+   "poster": "posters/f-watermark.jpg"
   }
  ],
  "presets": [
@@ -457,12 +835,15 @@ window.GALLERY = {
    "name": "Năng lượng cao",
    "for": "quảng cáo ngắn, trend",
    "cards": [
+    "txt-hook",
     "r-beat",
     "r-montage",
     "c-punch",
     "t-flash",
     "a-sfx",
-    "c-alternate"
+    "cap-pop",
+    "g-sticker",
+    "txt-cta"
    ]
   },
   {
@@ -474,7 +855,9 @@ window.GALLERY = {
     "c-push",
     "t-dissolve",
     "a-slowmo",
-    "l-warm"
+    "l-warm",
+    "cap-boxed",
+    "f-grain"
    ]
   },
   {
@@ -487,7 +870,9 @@ window.GALLERY = {
     "c-pan",
     "a-ramp",
     "t-dip",
-    "l-cinematic"
+    "l-cinematic",
+    "f-letterbox",
+    "f-watermark"
    ]
   },
   {
@@ -499,7 +884,40 @@ window.GALLERY = {
     "t-burn",
     "a-filmframe",
     "a-bw",
-    "r-beat"
+    "r-beat",
+    "f-grain"
+   ]
+  },
+  {
+   "id": "explainer",
+   "name": "Giải thích, hướng dẫn",
+   "for": "mẹo, kiến thức, top list",
+   "cards": [
+    "txt-hook",
+    "cap-karaoke",
+    "cap-keyword",
+    "g-callout",
+    "g-labels",
+    "g-checklist",
+    "g-progress",
+    "txt-chapter",
+    "txt-cta",
+    "f-safezone"
+   ]
+  },
+  {
+   "id": "sales",
+   "name": "Bán hàng",
+   "for": "sản phẩm, khuyến mãi, review",
+   "cards": [
+    "txt-hook",
+    "cap-pop",
+    "l-beforeafter",
+    "g-counter",
+    "g-sticker",
+    "l-pip",
+    "txt-cta",
+    "f-watermark"
    ]
   },
   {
@@ -517,6 +935,16 @@ window.GALLERY = {
    ]
   }
  ],
- "prompt_head": "Edit project <tên project> theo hồ sơ music-clip, chế độ auto. Dùng các kỹ thuật dưới đây (tên tiếng Anh trong ngoặc để AI hiểu đúng), mỗi kỹ thuật đặt đúng chỗ ghi trong intent.md, không rải đều:",
- "prompt_tail": "Chạy preview và qc, rồi cutkit draft ra project CapCut. Báo: kỹ thuật nào dùng ở giây nào và vì sao."
+ "prompt_head": "Làm video <tên project>. Dùng các kỹ thuật và thành phần dưới đây (tên tiếng Anh trong ngoặc để AI hiểu đúng), mỗi thứ đặt đúng chỗ ghi trong intent.md, không rải đều:",
+ "prompt_tail": "Làm xong chạy bản xem trước và QA. Báo: thứ nào dùng ở giây nào và vì sao.",
+ "sections": [
+  {
+   "id": "technique",
+   "name": "Kỹ thuật dựng"
+  },
+  {
+   "id": "element",
+   "name": "Thành phần trong video"
+  }
+ ]
 };
