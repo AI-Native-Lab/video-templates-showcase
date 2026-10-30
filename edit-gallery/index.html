@@ -8,24 +8,38 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <h1 id="title">Từ điển dựng phim</h1>
-    <p id="intro" class="intro"></p>
-    <div class="bar">
-      <input id="q" type="search" placeholder="Tìm: đẩy vào, flycam, phụ đề, lower third, hồi hộp…" aria-label="Tìm kỹ thuật hoặc thành phần">
-      <button id="sound" class="ghost" aria-pressed="false" title="Bật/tắt tiếng demo">🔇 Tiếng: tắt</button>
+<div class="app">
+  <aside class="side" aria-label="Nhóm">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 9l2-5 16 0-2 5M8 4l-1 5M13 4l-1 5M18 4l-1 5"/></svg>
+      <span id="title">Từ điển dựng phim</span>
+    </a>
+    <div class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="q" type="search" placeholder="Tìm: flycam, phụ đề, hồi hộp…" aria-label="Tìm kỹ thuật hoặc thành phần">
     </div>
-    <nav id="groups" class="tabs" aria-label="Nhóm kỹ thuật"></nav>
-    <div class="presets"><span class="lbl">Công thức có sẵn:</span><span id="presets"></span></div>
-  </div>
-</header>
+    <nav id="nav" class="nav" aria-label="Nhóm kỹ thuật và thành phần"></nav>
+  </aside>
 
-<main class="wrap">
-  <p id="lead" class="lead"></p>
-  <section id="grid" class="grid" aria-live="polite"></section>
-  <p id="empty" class="empty" hidden>Không có kỹ thuật nào khớp. Thử từ khác, tiếng Việt hoặc tiếng Anh.</p>
-</main>
+  <div class="main" id="top">
+    <header class="top">
+      <div>
+        <h1>Chọn kỹ thuật, ghép prompt</h1>
+        <p id="intro" class="intro"></p>
+      </div>
+      <button id="sound" class="ghost" aria-pressed="false" title="Bật/tắt tiếng demo">🔇 Tiếng: tắt</button>
+    </header>
+    <div class="presets"><span class="lbl">Công thức có sẵn</span><div id="presets" class="preset-row"></div></div>
+
+    <main id="sections" aria-live="polite"></main>
+    <p id="empty" class="empty" hidden>Không có kỹ thuật nào khớp. Thử từ khác, tiếng Việt hoặc tiếng Anh.</p>
+
+    <footer class="foot">
+      Demo kỹ thuật dựng bằng <b>cutkit</b>, demo thành phần bằng <b>HyperFrames</b>, footage Pexels + Unsplash (<a href="CREDITS.md">ghi công</a>), nhạc beat tự tạo.
+      Gợi ý "Trong CapCut" theo tên menu tiếng Anh, có thể khác theo phiên bản.
+    </footer>
+  </div>
+</div>
 
 <aside id="tray" class="tray" aria-label="Prompt đã ghép">
   <button id="tray-toggle" class="tray-head" aria-expanded="false">
@@ -43,11 +57,6 @@
     <p class="note">Dán vào Claude Code trong thư mục studio. Sửa tự do: thêm "ở giây nào", "cảnh nào" cho từng kỹ thuật.</p>
   </div>
 </aside>
-
-<footer class="wrap foot">
-  Demo kỹ thuật dựng bằng <b>cutkit</b>, demo thành phần bằng <b>HyperFrames</b>, footage Pexels + Unsplash (<a href="CREDITS.md">ghi công</a>), nhạc beat tự tạo.
-  Gợi ý "Trong CapCut" theo tên menu tiếng Anh, có thể khác theo phiên bản.
-</footer>
 
 <dialog id="dlg" aria-labelledby="d-name">
   <div class="d-media"><video id="d-video" playsinline controls loop preload="none"></video></div>
