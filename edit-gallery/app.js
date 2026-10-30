@@ -46,7 +46,7 @@
     el.innerHTML = `
       <button class="media" aria-label="Xem chi tiết ${c.name}">
         <video muted loop playsinline preload="none" poster="${c.poster}" src="${c.demo}"></video>
-        <span class="tag">${groupOf[c.group].name}</span>
+        <span class="tag">${groupOf[c.group].name}</span>${c.needs === "shoot" ? '<span class="tag need">Cần quay thật</span>' : ""}
       </button>
       <div class="body">
         <h3>${c.name}</h3>
@@ -57,7 +57,7 @@
       </div>`;
     el.querySelector(".media").onclick = () => openDialog(c);
     el.querySelector(".pick").onclick = () => toggle(c.id);
-    el._hay = norm([c.name, c.en, c.feel, c.use, c.prompt, groupOf[c.group].name].join(" "));
+    el._hay = norm([c.name, c.en, c.feel, c.use, c.prompt, c.shoot, groupOf[c.group].name].join(" "));
     grid.append(el);
     return el;
   });
@@ -145,6 +145,7 @@
     $("#d-group").textContent = `${groupOf[c.group].name} · ${groupOf[c.group].en}`;
     $("#d-name").textContent = c.name; $("#d-en").textContent = c.en;
     $("#d-feel").textContent = c.feel; $("#d-use").textContent = c.use; $("#d-avoid").textContent = c.avoid; $("#d-capcut").textContent = c.capcut;
+    $("#d-shoot").textContent = c.shoot || ""; $("#d-shoot").hidden = $("#d-shoot-l").hidden = !c.shoot;
     $("#d-prompt").textContent = c.prompt;
     const v = $("#d-video"); v.poster = c.poster; v.src = c.demo; v.muted = !sound; v.play().catch(() => {});
     sync(); dlg.showModal();
