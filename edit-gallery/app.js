@@ -24,6 +24,9 @@
     graphic: P('<path d="M5 20V11M12 20V5M19 20v-7"/>'),
     layout: P('<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M3 12h9"/>'),
     finish: P('<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>'),
+    vfx: P('<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/>'),
+    sfx: P('<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/>'),
+    style: P('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5M13 4v5M18 4v5"/>'),
   };
   const icon = (id) => ICON[id] || P('<circle cx="12" cy="12" r="4"/>');
 
@@ -88,7 +91,7 @@
           <button class="media" aria-label="Xem chi tiết ${c.name}">
             <video muted loop playsinline preload="none" poster="${c.poster}" src="${c.demo}"></video>
             <span class="play" aria-hidden="true">▶</span>
-            ${c.needs === "shoot" ? '<span class="tag need">Cần quay thật</span>' : ""}
+            ${c.needs === "shoot" ? '<span class="tag need">Cần quay thật</span>' : ""}${c.audio ? '<span class="tag aud">🔊 Có tiếng</span>' : ""}
           </button>
           <div class="body">
             <h3>${c.name}</h3>
@@ -219,7 +222,7 @@
     $("#d-feel").textContent = c.feel; $("#d-use").textContent = c.use; $("#d-avoid").textContent = c.avoid; $("#d-capcut").textContent = c.capcut;
     $("#d-shoot").textContent = c.shoot || ""; $("#d-shoot").hidden = $("#d-shoot-l").hidden = !c.shoot;
     $("#d-prompt").textContent = c.prompt;
-    const v = $("#d-video"); v.poster = c.poster; v.src = c.demo; v.muted = !sound; v.play().catch(() => {});
+    const v = $("#d-video"); v.poster = c.poster; v.src = c.demo; v.muted = !(sound || c.audio);   // opening is a click, so sound may start v.play().catch(() => {});
     sync(); dlg.showModal();
   }
   $("#d-pick").onclick = () => dlgCard && toggle(dlgCard.id);
